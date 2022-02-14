@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de Productos</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoria</th>
+                            <th>Caracteristicas Principales</th>
+                            <th colspan="2"  class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producto of productos">
+                            <td>{{producto.id}}</td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.categoria}}</td>
+                            <td>{{producto.caracteristicasPrincipales}}</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]="" role="button" >Editar</button>
+                            </td>
+                            <td class="text-center">  
+                                <button type="button" class="btn btn-outline-danger ms-2" role="button" >Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
