@@ -16,5 +16,8 @@ export const PRODUCTOS: Producto[] = [
   },
   {
     id: 5, nombre: 'Cuaderno', precio: 1000, categoria: 'Educación', caracteristicasPrincipales: 'Rojo de 100 hojas',
+  },
+  {
+    id: 6, nombre: 'Silla', precio: 10000, categoria: 'Hogar', caracteristicasPrincipales: 'De 3 patas',
   }
 ]
