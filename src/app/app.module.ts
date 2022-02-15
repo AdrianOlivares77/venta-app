@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
 import { ProductosComponent } from './component/productos/productos.component';
 import { HeaderComponent } from './component/header/header.component';
+import { ProductFilterPipe } from './pipes/product-filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProductosComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductFilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
