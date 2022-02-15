@@ -39,4 +39,12 @@ export class ProductosComponent implements OnInit {
     console.log(this.hasta);  
   }
 
+  eliminarProducto(producto: Producto) {
+    for (let i=0; i<this.productos.length;i++){
+      if (this.productos[i] == producto){
+        this.productos.splice(i,1);
+      }
+    }
+  }
+
 }
