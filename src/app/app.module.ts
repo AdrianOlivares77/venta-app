@@ -9,6 +9,10 @@ import { HeaderComponent } from './component/header/header.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './component/registro/registro.component';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { RegistroComponent } from './component/registro/registro.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

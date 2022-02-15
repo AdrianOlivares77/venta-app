@@ -8,7 +8,8 @@
                     </div>
                     <div class="col-3">
                         <form class="d-flex">
-                            <input class="form-control me-2" type="search" [(ngModel)]="palabraFiltro" name="palabraFiltro" placeholder="Buscar por Categoría..." aria-label="Search">
+                            <input class="form-control me-2" type="search" [(ngModel)]="palabraFiltro"
+                                name="palabraFiltro" placeholder="Buscar por Categoría..." aria-label="Search">
                         </form>
                     </div>
                 </div>
@@ -24,26 +25,30 @@
                             <th>Precio</th>
                             <th>Categoría</th>
                             <th>Características Principales</th>
-                            <th colspan="2"  class="text-center">Acciones</th>
+                            <th colspan="2" class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let producto of productos | productFilter: palabraFiltro">
+                        <tr *ngFor="let producto of productos | slice:desde:hasta | productFilter: palabraFiltro">
                             <td>{{producto.id}}</td>
                             <td>{{producto.nombre}}</td>
                             <td>{{producto.precio}}</td>
                             <td>{{producto.categoria}}</td>
                             <td>{{producto.caracteristicasPrincipales}}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]="" role="button" >Editar</button>
+                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]=""
+                                    role="button">Editar</button>
                             </td>
-                            <td class="text-center">  
-                                <button type="button" class="btn btn-outline-danger ms-2" role="button" >Eliminar</button>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-outline-danger ms-2"
+                                    role="button">Eliminar</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <mat-paginator [length]="productos.length" [pageSize]="pageSize"
+                    (page)="cambiarpagina($event)">
+                </mat-paginator>
             </div>
         </div>
     </div>
-</div>
