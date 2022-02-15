@@ -8,6 +8,7 @@ import { ProductosComponent } from './component/productos/productos.component';
 import { HeaderComponent } from './component/header/header.component';
 import { ProductFilterPipe } from './pipes/product-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { RegistroComponent } from './component/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ProductosComponent,
     HeaderComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
