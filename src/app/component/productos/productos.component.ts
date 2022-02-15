@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -11,6 +12,7 @@ import { PRODUCTOS } from 'src/app/service/productos.json';
 export class ProductosComponent implements OnInit {
 
   productos: Producto[] = []
+  palabraFiltro: string = '';
 
   constructor() { }
 
@@ -23,4 +25,6 @@ export class ProductosComponent implements OnInit {
   getProductos() : Observable<Producto[]>{
     return of(PRODUCTOS);
   }
+
+
 }
