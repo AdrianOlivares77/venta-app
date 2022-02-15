@@ -1,4 +1,4 @@
-export class Tarjeta{
+export class Tarjeta {
     id: number = 0;
     tipo: string = '';
     nombreCLiente: string = '';

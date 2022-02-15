@@ -11,7 +11,7 @@ import {PageEvent} from '@angular/material/paginator';
 })
 export class ProductosComponent implements OnInit {
 
-  productos:any[] = []
+  productos: Producto[] = [];
   palabraFiltro: string = '';
   pageSize = 5;
   desde: number = 0;

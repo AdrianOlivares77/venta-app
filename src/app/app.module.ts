@@ -21,7 +21,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ProductosComponent,
     HeaderComponent,
     ProductFilterPipe,
-    RegistroComponent
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,

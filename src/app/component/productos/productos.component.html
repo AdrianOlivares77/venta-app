@@ -9,7 +9,7 @@
                     <div class="col-3">
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" [(ngModel)]="palabraFiltro"
-                                name="palabraFiltro" placeholder="Buscar por Categoría..." aria-label="Search">
+                                name="palabraFiltro" placeholder="Buscar por Categoría o Producto..." aria-label="Search">
                         </form>
                     </div>
                 </div>
@@ -29,12 +29,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let producto of productos | slice:desde:hasta | productFilter: palabraFiltro">
-                            <td>{{producto.id}}</td>
-                            <td>{{producto.nombre}}</td>
-                            <td>{{producto.precio}}</td>
-                            <td>{{producto.categoria}}</td>
-                            <td>{{producto.caracteristicasPrincipales}}</td>
+                        <tr *ngFor="let producto of productos | productFilter:palabraFiltro | slice:desde:hasta">
+                            <td>{{producto.id }}</td>
+                            <td>{{producto.nombre }}</td>
+                            <td>{{producto.precio }}</td>
+                            <td>{{producto.categoria }}</td>
+                            <td>{{producto.caracteristicasPrincipales }}</td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-warning me-2" [routerLink]=""
                                     role="button">Editar</button>

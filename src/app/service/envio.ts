@@ -1,4 +1,4 @@
-export class Envio{
+export class Envio {
     id: number = 0;
     pais: string = '';
     calle: string = '';
