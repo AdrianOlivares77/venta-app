@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
-import swal from 'sweetalert2';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-productos',
@@ -11,8 +11,13 @@ import swal from 'sweetalert2';
 })
 export class ProductosComponent implements OnInit {
 
-  productos: Producto[] = []
+  productos:any[] = []
   palabraFiltro: string = '';
+  pageSize = 5;
+  desde: number = 0;
+  hasta: number = 5;
+
+
 
   constructor() { }
 
@@ -26,5 +31,12 @@ export class ProductosComponent implements OnInit {
     return of(PRODUCTOS);
   }
 
+  cambiarpagina(e:PageEvent){
+    console.log(e);
+    this.desde = e.pageIndex * e.pageSize;
+    this.hasta = this.desde + e.pageSize;
+    console.log(this.desde);
+    console.log(this.hasta);  
+  }
 
 }
