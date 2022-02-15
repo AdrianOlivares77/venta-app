@@ -4,6 +4,8 @@ import { Tarjeta } from "./tarjeta";
 
 export class Usuario {
     id: number = 0;
+    nombre: string = '';
+    apellido: string = '';
     username: string = '';
     password: string = '';
     email: string = '';
