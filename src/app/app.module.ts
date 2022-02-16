@@ -12,6 +12,7 @@ import { RegistroComponent } from './component/registro/registro.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CarritoComponent } from './component/carrito/carrito.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HeaderComponent,
     ProductFilterPipe,
     RegistroComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,

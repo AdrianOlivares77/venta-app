@@ -1,0 +1,22 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Carrito de Compras</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>{{titulo}}</p>
+    </div>
+    <div class="offcanvas-footer">
+        <div class="container-fluid m-4">
+            <hr class="my-3">
+            <div class="row">
+                <div class="col-6 text-end pe-0">
+                    <button class="btn btn-secondary ms-1 me-0" (click)="vaciarCarrito()">Vaciar Carrito</button>
+                </div>
+                <div class="col-6 text-start p-0">
+                    <button class="btn btn-warning mx-2">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
