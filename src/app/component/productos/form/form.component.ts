@@ -72,12 +72,17 @@ export class FormComponent implements OnInit {
     return this.form.controls;
     }
 
-  onSubmit(): void {
+  onSubmit(opcion: String): void {
     this.submitted = true;
     if (this.form.invalid){
     return;
     }
-    this.createProducto();
+    if (opcion === 'crear'){
+      this.createProducto();
+    }
+    if (opcion === 'editar'){
+      this.updateProducto();
+    }
   }
   
   onReset(): void{
