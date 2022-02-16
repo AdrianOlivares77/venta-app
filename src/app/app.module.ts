@@ -13,7 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormComponent } from './component/productos/form/form.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { FormComponent } from './component/productos/form/form.component';
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
