@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
 import {PageEvent} from '@angular/material/paginator';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productos',
@@ -32,19 +33,34 @@ export class ProductosComponent implements OnInit {
   }
 
   cambiarpagina(e:PageEvent){
-    console.log(e);
     this.desde = e.pageIndex * e.pageSize;
     this.hasta = this.desde + e.pageSize;
-    console.log(this.desde);
-    console.log(this.hasta);  
   }
 
   eliminarProducto(producto: Producto) {
-    for (let i=0; i<this.productos.length;i++){
-      if (this.productos[i] == producto){
-        this.productos.splice(i,1);
-      }
-    }
+    swal({
+      title: 'Estas seguro?',
+      text: `¿Seguro que deseas eliminar al producto ${producto.nombre}`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar!',
+      cancelButtonText: 'No, cancelar!',
+      confirmButtonClass: 'btn btn-success ms-2',
+      cancelButtonClass: 'btn btn-danger me-2',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).
+    then((result) => {
+      if (result.value) {
+        for (let i=0; i<this.productos.length;i++){
+          if (this.productos[i] == producto){
+            this.productos.splice(i,1);
+          }
+            swal('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
+          }
+        
+      } 
+    })
   }
 
 }
