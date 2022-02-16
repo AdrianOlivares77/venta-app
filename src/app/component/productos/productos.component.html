@@ -39,7 +39,7 @@
                             <td>{{producto.categoria}}</td>
                             <td>{{producto.caracteristicasPrincipales}}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]=""
+                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]="['/productos/form',producto.id]"
                                     role="button">Editar</button>
                             </td>
                             <td class="text-center">
