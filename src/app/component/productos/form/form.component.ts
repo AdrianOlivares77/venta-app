@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
@@ -24,14 +24,17 @@ export class FormComponent implements OnInit {
 
   submitted : boolean = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { 
+  constructor(private router: Router, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute) { 
+
     this.getProductos().subscribe ((productos) =>{
       this.productos = productos;
     })
     
   }
 
+
   ngOnInit(): void { 
+    this.getProducto();
     this.form = this.formBuilder.group(
       {
         nombre:['',
@@ -75,7 +78,6 @@ export class FormComponent implements OnInit {
     return;
     }
     this.createProducto();
-  }
 
   onReset(): void{
     this.submitted=false;
@@ -92,10 +94,31 @@ export class FormComponent implements OnInit {
     swal('Producto nuevo',`El Producto ${this.producto.nombre} ha sido creado satisfactoriamente!!!`,'success');
   }
 
-  
-
   generateId() {
       return Math.random().toString(36).substr(2,9);
-    }
-
   }
+
+  getProducto() {
+    this.activeRoute.params.subscribe(params => {
+      let id = params ['id']
+      if (id){
+        for (let i=0; i<this.productos.length;i++){
+          if (this.productos[i].id === id){
+            this.producto = this.productos[i];
+          }
+        }
+      }
+    })
+  }
+
+  updateProducto(){
+    for (let i=0; i<this.productos.length;i++){
+      if (this.productos[i].id === this.producto.id){
+        this.productos[i] = this.producto;
+        this.router.navigate(['/productos'])
+       swal('Producto modificado',`El Producto ${this.producto.nombre} ha sido modificado satisfactoriamente!!!`,'success');
+      }
+    }
+  }
+  
+}
