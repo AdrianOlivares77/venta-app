@@ -25,7 +25,7 @@
                             <th>Precio</th>
                             <th>Categoría</th>
                             <th>Características Principales</th>
-                            <th colspan="2" class="text-center">Acciones</th>
+                            <th colspan="3" class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +35,10 @@
                             <td>{{producto.precio }}</td>
                             <td>{{producto.categoria }}</td>
                             <td>{{producto.caracteristicasPrincipales }}</td>
+                            <td class="text-center">
+                                <button type="button" (click)="addToCarrito(producto)" class="btn btn-outline-success me-2" [routerLink]=""
+                                    role="button">Agregar al Carrito</button>
+                            </td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-warning me-2" [routerLink]=""
                                     role="button">Editar</button>

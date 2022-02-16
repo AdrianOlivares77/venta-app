@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-9">
+                        <h3 class="card-title">Orden de Compra</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Características Principales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let producto of listaCompra | slice:desde:hasta">
+                            <td>{{producto.id }}</td>
+                            <td>{{producto.nombre }}</td>
+                            <td>{{producto.precio }}</td>
+                            <td>{{producto.categoria }}</td>
+                            <td>{{producto.caracteristicasPrincipales }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                        <div class="text-end my-2">
+                            <button class="btn btn-outline-secondary me-md-2" (click)="volver()" type="button">Volver</button>
+                            <button class="btn btn-outline-success" (click)="comprar()" type="button">Confirmar Compra</button>
+                        </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <mat-paginator [length]="listaCompra.length" [pageSize]="pageSize" (page)="cambiarpagina($event)">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>

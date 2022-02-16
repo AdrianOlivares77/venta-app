@@ -13,6 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarritoComponent } from './component/carrito/carrito.component';
+import { OrdenCompraComponent } from './component/orden-compra/orden-compra.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     ProductFilterPipe,
     RegistroComponent,
     CarritoComponent,
+    OrdenCompraComponent,
   ],
   imports: [
     BrowserModule,
