@@ -5,6 +5,9 @@
                 <div class="row">
                     <div class="col-9">
                         <h3 class="card-title">Lista de Productos</h3>
+                        <div class="my-2 text-start">
+                            <button class="btn btn-outline-primary" type="button" [routerLink]="['/productos/form']">Nuevo Producto</button>
+                        </div>
                     </div>
                     <div class="col-3">
                         <form class="d-flex">
@@ -40,12 +43,12 @@
                                     role="button">Agregar al Carrito</button>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]=""
+                                <button type="button" class="btn btn-outline-warning me-2" [routerLink]="['/productos/form',producto.id]"
                                     role="button">Editar</button>
                             </td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-outline-danger ms-2"
-                                    role="button">Eliminar</button>
+                                    role="button" (click)="eliminarProducto(producto)">Eliminar</button>
                             </td>
                         </tr>
                     </tbody>

@@ -15,6 +15,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CarritoComponent } from './component/carrito/carrito.component';
 import { OrdenCompraComponent } from './component/orden-compra/orden-compra.component';
 
+import { FormComponent } from './component/productos/form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { OrdenCompraComponent } from './component/orden-compra/orden-compra.comp
     RegistroComponent,
     CarritoComponent,
     OrdenCompraComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { OrdenCompraComponent } from './component/orden-compra/orden-compra.comp
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

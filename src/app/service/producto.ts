@@ -1,5 +1,5 @@
 export class Producto {
-    id: number = 0;
+    id: string = '';
     nombre: string = '';
     precio: number = 0;
     caracteristicasPrincipales: string = '';
