@@ -78,7 +78,8 @@ export class FormComponent implements OnInit {
     return;
     }
     this.createProducto();
-
+  }
+  
   onReset(): void{
     this.submitted=false;
     this.form.reset();
@@ -120,5 +121,5 @@ export class FormComponent implements OnInit {
       }
     }
   }
-  
+
 }
