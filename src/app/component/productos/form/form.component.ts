@@ -67,6 +67,8 @@ export class FormComponent implements OnInit {
     for (let i=0; i<this.productos.length;i++){
       if (this.productos[i].id === this.producto.id){
         this.productos[i] = this.producto;
+        this.router.navigate(['/productos'])
+       swal('Producto modificado',`El Producto ${this.producto.nombre} ha sido modificado satisfactoriamente!!!`,'success');
       }
     }
   }
