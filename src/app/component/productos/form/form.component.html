@@ -4,34 +4,53 @@
             Crear un nuevo producto
         </div>
         <div class="card-body">
-            <form >
+            <form [formGroup]="form">
                 <div class="form-group row mb-3" >
-                    <label for="nombre" class="col-form-label col-sm-2"  >Nombre</label>
+                    <label for="nombre" class="col-form-label col-sm-2" >Nombre</label>
                     <div class="col-sm-10">
-                        <input type="text" name="nombre" class="form-control"  [(ngModel)]="producto.nombre" required/>
+                        <input type="text" formControlName="nombre" class="form-control" [(ngModel)]="producto.nombre" [ngClass]="{'is-invalid': submitted && f['nombre'].errors}"/>
+                        <div *ngIf="submitted && f['nombre'].errors" class="invalid-feedback">
+                            <div *ngIf="f['nombre'].errors['required']">Nombre es requerido</div>
+                            <div *ngIf="f['nombre'].errors['minlength']">Nombre debe tener minimo 3 carácteres</div>
+                            <div *ngIf="f['nombre'].errors['maxlength']">Nombre no debe exceder los 30 caracteres</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <label for="precio" class="col-form-label col-sm-2">Precio</label>
                     <div class="col-sm-10">
-                        <input type="number" name="precio" class="form-control" required  [(ngModel)]="producto.precio" required/>
+                        <input type="number" formControlName="precio" class="form-control" [(ngModel)]="producto.precio" [ngClass]="{'is-invalid': submitted && f['precio'].errors}"/>
+                        <div *ngIf="submitted && f['precio'].errors" class="invalid-feedback">
+                            <div *ngIf="f['precio'].errors['required']">Precio es requerido</div>
+                            <div *ngIf="f['precio'].errors['min']">El precio mínimo es $100</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <label for="categoria" class="col-form-label col-sm-2">Categoria</label>
                     <div class="col-sm-10">
-                        <input type="text" name="categoria" class="form-control" required minlength="5" maxlength="100" required placeholder="Por ejemplo, Televisor"  [(ngModel)]="producto.categoria" required/>
+                        <input type="text" formControlName="categoria" class="form-control" required placeholder="Por ejemplo, Televisor"  [(ngModel)]="producto.categoria" [ngClass]="{'is-invalid': submitted && f['categoria'].errors}"/>
+                        <div *ngIf="submitted && f['categoria'].errors" class="invalid-feedback">
+                            <div *ngIf="f['categoria'].errors['required']">Categoria es requerida</div>
+                            <div *ngIf="f['categoria'].errors['minlength']">La categoria deb tener mínimo 3 carácteres</div>
+                            <div *ngIf="f['categoria'].errors['maxlength']">La categoria no debe exeder los 20 carácteres</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <label for="precio" class="col-form-label col-sm-2">Características Principales</label>
                     <div class="col-sm-10">
-                        <input type="text" name="caracteristicasPrincipales" minlength="5" maxlength="100" required placeholder="Por ejemplo, Pantalla 43 Pulgadas" class="form-control" [(ngModel)]="producto.caracteristicasPrincipales" required/>
+                        <input type="text" formControlName="caracteristicasPrincipales" required placeholder="Por ejemplo, Pantalla 43 Pulgadas" class="form-control" [(ngModel)]="producto.caracteristicasPrincipales" [ngClass]="{'is-invalid': submitted && f['caracteristicasPrincipales'].errors}"/>
+                        <div *ngIf="submitted && f['caracteristicasPrincipales'].errors" class="invalid-feedback">
+                            <div *ngIf="f['caracteristicasPrincipales'].errors['required']">Caracteristicas Principales es requerida</div>
+                            <div *ngIf="f['caracteristicasPrincipales'].errors['minlength']">Las características principales deben tener mínimo 3 carácteres</div>
+                            <div *ngIf="f['caracteristicasPrincipales'].errors['maxlength']">Las caracteristicas principales no debe exeder los 50 carácteres</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <div class="col">
-                        <button class="btn btn-outline-primary btn-lg float-start" (click)="createProducto()" *ngIf="!producto.id else elseBlock" role="button">Crear</button>
+                        <button class="btn btn-outline-primary btn-lg float-start" (click)="onSubmit()" *ngIf="!producto.id else elseBlock" role="button">Crear</button>
                         <ng-template #elseBlock>
                             <button class="btn btn-outline-warning btn-lg float-start" role="button" (click)="updateProducto()">Editar</button>
                         </ng-template>

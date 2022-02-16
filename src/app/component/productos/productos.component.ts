@@ -12,7 +12,7 @@ import swal from 'sweetalert2';
 })
 export class ProductosComponent implements OnInit {
 
-  productos:any[] = []
+  productos:any[] = [];
   palabraFiltro: string = '';
   pageSize = 5;
   desde: number = 0;
@@ -62,5 +62,4 @@ export class ProductosComponent implements OnInit {
       } 
     })
   }
-
 }
