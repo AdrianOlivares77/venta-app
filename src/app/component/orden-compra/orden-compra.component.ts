@@ -3,6 +3,7 @@ import { CarritoService } from 'src/app/service/carrito.service';
 import { Producto } from 'src/app/service/producto';
 import {PageEvent} from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { VentaService } from 'src/app/service/venta.service';
 
 @Component({
   selector: 'app-orden-compra',
@@ -16,7 +17,8 @@ export class OrdenCompraComponent implements OnInit {
   desde: number = 0;
   hasta: number = 5;
 
-  constructor(private carritoService: CarritoService,private router: Router) { }
+  constructor(private carritoService: CarritoService,private router: Router,
+    private ventaService: VentaService) { }
 
   ngOnInit(): void {
     this.listaCompra = this.carritoService.getCarrito();
@@ -35,8 +37,9 @@ export class OrdenCompraComponent implements OnInit {
   }
   
   public comprar(): void {
+    this.ventaService.setVentaProductos(this.carritoService.getCarrito());
+    this.ventaService.setMontoFinal(this.carritoService.getMontoTotal());
     this.router.navigate(['/envio']);
-    
   }
 
   public getMontoTotal(): number {
