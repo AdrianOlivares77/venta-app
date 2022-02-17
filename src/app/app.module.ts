@@ -22,6 +22,8 @@ import { LoginComponent } from './component/login/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+import { EnvioComponent } from './component/envio/envio.component';
+import { PagoComponent } from './component/pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { environment } from 'src/environments/environment';
     CarritoComponent,
     LoginComponent,
     ProfileComponent,
+    EnvioComponent,
+    PagoComponent,
   ],
   imports: [
     BrowserModule,
