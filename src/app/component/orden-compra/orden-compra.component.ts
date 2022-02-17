@@ -38,4 +38,8 @@ export class OrdenCompraComponent implements OnInit {
     
   }
 
+  public getMontoTotal(): number {
+    return this.carritoService.getMontoTotal();
+  }
+
 }

@@ -25,12 +25,26 @@
                         <tr *ngFor="let producto of listaCompra | slice:desde:hasta">
                             <td>{{producto.id }}</td>
                             <td>{{producto.nombre }}</td>
-                            <td>{{producto.precio }}</td>
+                            <td>{{producto.precio | currency:'':'$':'1.0-0'}}</td>
                             <td>{{producto.categoria }}</td>
                             <td>{{producto.caracteristicasPrincipales }}</td>
                         </tr>
                     </tbody>
                     <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <div class="container">
+                                    <div class="row justify-content-end">
+                                        <div class="col-3 ps-5">
+                                            <div class="input-group mb-1">
+                                                <span class="input-group-text" id="inputGroup-sizing-default">Monto Total</span>
+                                                <span class="input-group-text bg-light">{{getMontoTotal() | currency:'':'$':'1.0-0'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="5">
                         <div class="text-end my-2">

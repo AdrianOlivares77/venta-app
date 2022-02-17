@@ -35,7 +35,7 @@
                         <tr *ngFor="let producto of productos | productFilter:palabraFiltro | slice:desde:hasta">
                             <td>{{producto.id }}</td>
                             <td>{{producto.nombre }}</td>
-                            <td>{{producto.precio }}</td>
+                            <td>{{producto.precio | currency:'':'$':'1.0-0'}}</td>
                             <td>{{producto.categoria }}</td>
                             <td>{{producto.caracteristicasPrincipales }}</td>
                             <td class="text-center">
