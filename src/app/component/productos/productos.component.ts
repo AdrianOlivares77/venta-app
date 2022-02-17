@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
 import {PageEvent} from '@angular/material/paginator';
+import { CarritoService } from 'src/app/service/carrito.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -12,15 +13,13 @@ import swal from 'sweetalert2';
 })
 export class ProductosComponent implements OnInit {
 
-  productos:any[] = [];
+  productos:Producto[] = [];
   palabraFiltro: string = '';
   pageSize = 5;
   desde: number = 0;
   hasta: number = 5;
 
-
-
-  constructor() { }
+  constructor(private carritoService: CarritoService) { }
 
   ngOnInit(): void {
     this.getProductos().subscribe ((productos) =>{
@@ -35,6 +34,16 @@ export class ProductosComponent implements OnInit {
   cambiarpagina(e:PageEvent){
     this.desde = e.pageIndex * e.pageSize;
     this.hasta = this.desde + e.pageSize;
+  }
+
+  public addToCarrito(producto: Producto): void {
+    this.carritoService.addToCarrito(producto);
+    (swal as any).fire({
+      position: 'top-end',
+      title: 'Producto Agregado',
+      showConfirmButton: false,
+      timer: 300
+    })
   }
 
   eliminarProducto(producto: Producto) {
@@ -63,3 +72,4 @@ export class ProductosComponent implements OnInit {
     })
   }
 }
+

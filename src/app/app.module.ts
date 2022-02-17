@@ -14,6 +14,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormComponent } from './component/productos/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrdenCompraComponent } from './component/orden-compra/orden-compra.component';
+import { CarritoComponent } from './component/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductFilterPipe,
     RegistroComponent,
     FormComponent,
+    OrdenCompraComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
