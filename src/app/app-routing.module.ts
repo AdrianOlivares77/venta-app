@@ -9,6 +9,8 @@ import { RegistroComponent } from './component/registro/registro.component';
 import { LoginComponent } from './component/login/login.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { AuthGuard } from '@auth0/auth0-angular';
+import { EnvioComponent } from './component/envio/envio.component';
+import { PagoComponent } from './component/pago/pago.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: 'orden-compra',
     component: OrdenCompraComponent, canActivate: [AuthGuard]
+  },
+  {
+    path:'envio',
+    component: EnvioComponent, canActivate: [AuthGuard]
+  },
+  {
+    path:'pago',
+    component: PagoComponent, canActivate: [AuthGuard]
   },
   {
     path: 'productos/form',
