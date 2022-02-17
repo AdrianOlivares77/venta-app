@@ -19,17 +19,22 @@ export class PagoComponent implements OnInit {
   }
 
   public cancelar(): void {
-    (swal as any)({
-      title: 'Está Seguro?',
+    swal.fire({
+      title: 'Esta Seguro?',
       text: "No podrá deshacer los cambios!",
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Confirmar!'
-    }).then((result: { isConfirmed: boolean; }) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        (swal as any).fire('Compra Cancelada')
-        this.router.navigate(['/productos'])
+        swal.fire(
+          'Compra cancelada!',
+          'Su compra ha sido cancelada.',
+          'success'
+        )
+        this.router.navigate(['/productos']);
       }
     })
   }

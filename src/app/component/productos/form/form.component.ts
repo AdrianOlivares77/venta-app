@@ -97,7 +97,7 @@ export class FormComponent implements OnInit {
     this.producto.id = this.generateId();
     this.productos.push(this.producto);
     this.router.navigate(['/productos'])
-    swal('Producto nuevo',`El Producto ${this.producto.nombre} ha sido creado satisfactoriamente!!!`,'success');
+    swal.fire('Producto nuevo',`El Producto ${this.producto.nombre} ha sido creado satisfactoriamente!!!`,'success');
   }
 
   generateId() {
@@ -122,7 +122,7 @@ export class FormComponent implements OnInit {
       if (this.productos[i].id === this.producto.id){
         this.productos[i] = this.producto;
         this.router.navigate(['/productos'])
-       swal('Producto modificado',`El Producto ${this.producto.nombre} ha sido modificado satisfactoriamente!!!`,'success');
+       swal.fire('Producto modificado',`El Producto ${this.producto.nombre} ha sido modificado satisfactoriamente!!!`,'success');
       }
     }
   }

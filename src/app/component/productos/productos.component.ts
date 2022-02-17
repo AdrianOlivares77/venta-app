@@ -48,17 +48,14 @@ export class ProductosComponent implements OnInit {
   }
 
   eliminarProducto(producto: Producto) {
-    swal({
+    swal.fire({
       title: 'Estas seguro?',
       text: `¿Seguro que deseas eliminar al producto ${producto.nombre}`,
-      type: 'warning',
+      icon: 'warning',
       showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
       confirmButtonText: 'Si, eliminar!',
-      cancelButtonText: 'No, cancelar!',
-      confirmButtonClass: 'btn btn-success ms-2',
-      cancelButtonClass: 'btn btn-danger me-2',
-      buttonsStyling: false,
-      reverseButtons: true
     }).
     then((result) => {
       if (result.value) {
@@ -66,7 +63,7 @@ export class ProductosComponent implements OnInit {
           if (this.productos[i] == producto){
             this.productos.splice(i,1);
           }
-            swal('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
+            swal.fire('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
           }
         
       } 

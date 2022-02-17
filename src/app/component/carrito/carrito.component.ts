@@ -27,14 +27,14 @@ export class CarritoComponent implements OnInit {
     this.carritoService.deleteAllCarrito();
     this.listaProductos = this.carritoService.getCarrito();
     this.montoTotal = this.carritoService.getMontoTotal();
-    swal('Carrito vaciado.');
+    swal.fire('Carrito vaciado.');
   }
 
   public deleteFromCarrito(i: number): void {
     this.carritoService.deleteByIndex(i);
     this.listaProductos = this.carritoService.getCarrito();
     this.montoTotal = this.carritoService.getMontoTotal();
-    swal('Producto Eliminado Exitosamente');
+    swal.fire('Producto Eliminado Exitosamente');
   }
 
   public finalizarCompra(): void {
