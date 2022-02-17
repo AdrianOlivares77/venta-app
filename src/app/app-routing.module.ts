@@ -12,7 +12,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
