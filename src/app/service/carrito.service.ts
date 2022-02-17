@@ -1,6 +1,5 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { Producto } from './producto';
 
 @Injectable({

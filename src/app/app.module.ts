@@ -30,6 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CarritoComponent,
     OrdenCompraComponent,
     FormComponent,
+    OrdenCompraComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
