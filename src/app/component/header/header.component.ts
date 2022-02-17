@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CarritoService } from 'src/app/service/carrito.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,23 @@ import { CarritoService } from 'src/app/service/carrito.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isAuthenticated: boolean;
 
-  ngOnInit(): void {
+  constructor(@Inject(DOCUMENT) private document: Document,
+    private authService: AuthService) {
+    this.isAuthenticated = false;
+  }
+
+  public ngOnInit(): void {
+    this.authService.isAuthenticated$.subscribe((success: boolean) => {
+      this.isAuthenticated = success;
+    });
+  }
+
+  public signOut(): void {
+    this.authService.logout({
+      returnTo: this.document.location.origin,
+    });
   }
 
 }

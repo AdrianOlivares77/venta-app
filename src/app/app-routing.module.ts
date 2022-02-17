@@ -6,35 +6,51 @@ import { OrdenCompraComponent } from './component/orden-compra/orden-compra.comp
 import { FormComponent } from './component/productos/form/form.component';
 import { ProductosComponent } from './component/productos/productos.component';
 import { RegistroComponent } from './component/registro/registro.component';
+import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent
   },
   {
     path: 'productos',
-    component: ProductosComponent
+    component: ProductosComponent, canActivate: [AuthGuard]
   },
   {
     path: 'registro',
-    component: RegistroComponent
+    component: RegistroComponent, canActivate: [AuthGuard]
   },
   {
     path: 'carrito',
-    component: CarritoComponent
+    component: CarritoComponent, canActivate: [AuthGuard]
   },
   {
     path: 'orden-compra',
-    component: OrdenCompraComponent
+    component: OrdenCompraComponent, canActivate: [AuthGuard]
   },
   {
     path: 'productos/form',
-    component: FormComponent
+    component: FormComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'productos/form/:id', 
-    component : FormComponent
+    path: 'productos/form/:id',
+    component: FormComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'signIn',
+    component: LoginComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'signIn'
   }
 ];
 

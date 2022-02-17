@@ -18,6 +18,10 @@ import { OrdenCompraComponent } from './component/orden-compra/orden-compra.comp
 import { FormComponent } from './component/productos/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './component/login/login.component';
+import { ProfileComponent } from './component/profile/profile.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormComponent,
     OrdenCompraComponent,
     CarritoComponent,
+    LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTableModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AuthModule.forRoot(environment.auth0)
   ],
   providers: [],
   bootstrap: [AppComponent]
