@@ -33,8 +33,9 @@ export class OrdenCompraComponent implements OnInit {
   public volver(): void {
     this.router.navigate(['/productos']);
   }
-
+  
   public comprar(): void {
+    this.router.navigate(['/envio']);
     
   }
 
