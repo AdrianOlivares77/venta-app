@@ -5,6 +5,7 @@ import { PRODUCTOS } from 'src/app/service/productos.json';
 import {PageEvent} from '@angular/material/paginator';
 import { CarritoService } from 'src/app/service/carrito.service';
 import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-productos',
@@ -19,7 +20,7 @@ export class ProductosComponent implements OnInit {
   desde: number = 0;
   hasta: number = 5;
 
-  constructor(private carritoService: CarritoService) { }
+  constructor(private carritoService: CarritoService,private router: Router) { }
 
   ngOnInit(): void {
     this.getProductos().subscribe ((productos) =>{

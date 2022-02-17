@@ -32,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let producto of productos | slice:desde:hasta  | productFilter:palabraFiltro">
+                        <tr *ngFor="let producto of productos | productFilter:palabraFiltro | slice:desde:hasta">
                             <td>{{producto.id }}</td>
                             <td>{{producto.nombre }}</td>
                             <td>{{producto.precio }}</td>
