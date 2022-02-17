@@ -12,10 +12,12 @@ import { RegistroComponent } from './component/registro/registro.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CarritoComponent } from './component/carrito/carrito.component';
+import { OrdenCompraComponent } from './component/orden-compra/orden-compra.component';
+
 import { FormComponent } from './component/productos/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { OrdenCompraComponent } from './component/orden-compra/orden-compra.component';
-import { CarritoComponent } from './component/carrito/carrito.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     HeaderComponent,
     ProductFilterPipe,
     RegistroComponent,
+    CarritoComponent,
+    OrdenCompraComponent,
     FormComponent,
     OrdenCompraComponent,
     CarritoComponent,
@@ -36,7 +40,8 @@ import { CarritoComponent } from './component/carrito/carrito.component';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

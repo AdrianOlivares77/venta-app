@@ -17,7 +17,7 @@
             <tbody>
                 <tr *ngFor="let producto of listaProductos; index as i">
                     <td>{{producto.nombre }}</td>
-                    <td>{{producto.precio }}</td>
+                    <td>{{producto.precio | number:'1.0-0'}}</td>
                     <td>{{producto.categoria }}</td>
                     <td><button class="btn btn-danger btn-sm" data-bs-dismiss="offcanvas" (click)="deleteFromCarrito(i)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -32,6 +32,14 @@
     </div>
     <div class="offcanvas-footer">
         <div class="container-fluid m-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Monto Total</span>
+                        <span class="input-group-text bg-light">{{getMontoTotal() | number:'1.0-0'}}</span>
+                    </div>
+                </div>
+            </div>
             <hr class="my-3">
             <div class="row">
                 <div class="col-6 text-end pe-0">
