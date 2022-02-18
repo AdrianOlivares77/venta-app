@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CarritoService } from 'src/app/service/carrito.service';
 import { Tarjeta } from 'src/app/service/tarjeta';
 import { VentaService } from 'src/app/service/venta.service';
 import swal from 'sweetalert2';
@@ -14,7 +15,8 @@ export class PagoComponent implements OnInit {
 
   dataPago: Tarjeta = new Tarjeta();
 
-  constructor(private router: Router,private ventaService: VentaService) { }
+  constructor(private router: Router,private ventaService: VentaService,
+    private carritoService: CarritoService) { }
 
   ngOnInit(): void {
   }
@@ -44,6 +46,7 @@ export class PagoComponent implements OnInit {
           'Su compra ha sido cancelada.',
           'success'
         )
+        this.carritoService.deleteAllCarrito();
         this.router.navigate(['/productos']);
       }
     })
