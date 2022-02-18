@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { OrdenCompraComponent } from './orden-compra.component';
 
 describe('OrdenCompraComponent', () => {
@@ -8,7 +9,8 @@ describe('OrdenCompraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OrdenCompraComponent ]
+      declarations: [ OrdenCompraComponent ],
+      imports: [ HttpClientTestingModule, RouterTestingModule]
     })
     .compileComponents();
   });
