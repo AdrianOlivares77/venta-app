@@ -4,5 +4,5 @@ export class Envio {
     calle: string = '';
     ciudad: string = '';
     region: string = '';
-    codigoPostal: number = 0;
+    codigoPostal: number = NaN;
 }
