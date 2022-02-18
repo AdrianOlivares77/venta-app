@@ -24,6 +24,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
 import { EnvioComponent } from './component/envio/envio.component';
 import { PagoComponent } from './component/pago/pago.component';
+import { ResumenCompraComponent } from './component/resumen-compra/resumen-compra.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PagoComponent } from './component/pago/pago.component';
     ProfileComponent,
     EnvioComponent,
     PagoComponent,
+    ResumenCompraComponent,
   ],
   imports: [
     BrowserModule,

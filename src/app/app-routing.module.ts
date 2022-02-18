@@ -11,11 +11,16 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { AuthGuard } from '@auth0/auth0-angular';
 import { EnvioComponent } from './component/envio/envio.component';
 import { PagoComponent } from './component/pago/pago.component';
+import { ResumenCompraComponent } from './component/resumen-compra/resumen-compra.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'resumen-compra',
+    component: ResumenCompraComponent
   },
   {
     path: 'productos',

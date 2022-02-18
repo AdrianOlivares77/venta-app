@@ -56,7 +56,7 @@ export class PagoComponent implements OnInit {
     this.dataPago.id = this.ventaService.getventaProductos().length;
     this.ventaService.setDatosPago(this.dataPago);
     console.log(this.dataPago);
-    //this.router.navigate([]);
+    this.router.navigate(['resumen-compra']);
   }
 
 
