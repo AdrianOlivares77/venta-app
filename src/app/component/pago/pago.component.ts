@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tarjeta } from 'src/app/service/tarjeta';
 import { VentaService } from 'src/app/service/venta.service';
@@ -17,6 +18,15 @@ export class PagoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  form: FormGroup = new FormGroup({
+    tipo: new FormControl(''),
+    nombreCLiente: new FormControl(''),
+    numeroTarjeta: new FormControl(''),
+    codigoSeguridad: new FormControl(''),
+    mesExp: new FormControl(''),
+    annoExp: new FormControl(''),
+  });
 
   public cancelar(): void {
     swal.fire({
@@ -37,6 +47,13 @@ export class PagoComponent implements OnInit {
         this.router.navigate(['/productos']);
       }
     })
+  }
+
+  public pagar(): void {
+    this.dataPago.id = this.ventaService.getventaProductos().length;
+    this.ventaService.setDatosPago(this.dataPago);
+    console.log(this.dataPago);
+    //this.router.navigate([]);
   }
 
 

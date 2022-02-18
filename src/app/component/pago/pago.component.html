@@ -10,33 +10,32 @@
 
         <div class="row g-5">
             <div class="col-md-12 col-lg-12">
-                <form class="needs-validation" novalidate="">
+                <form class="needs-validation" novalidate="" [formGroup]="form">
 
                     <h4 class="mt-4">Información de Pago</h4>
 
                     <div class="my-3">
                         <div class="form-check">
-                            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked=""
-                                required="">
+                            <input id="credit" name="tipo" formControlName="tipo" [(ngModel)]="dataPago.tipo" value="Tarjeta de Crédito" type="radio" class="form-check-input" required="" checked="">
                             <label class="form-check-label" for="credit">Tarjeta de Crédito</label>
                         </div>
                         <div class="form-check">
-                            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <input id="debit" name="tipo" formControlName="tipo" [(ngModel)]="dataPago.tipo" value="Tarjeta de Débito" type="radio" class="form-check-input" required="">
                             <label class="form-check-label" for="debit">Tarjeta de Débito</label>
                         </div>
                         <div class="form-check">
-                            <input id="chequera" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <input id="chequera" name="tipo" formControlName="tipo" [(ngModel)]="dataPago.tipo" value="Chequera Electrónica" type="radio" class="form-check-input" required="">
                             <label class="form-check-label" for="chequera">Chequera Electrónica</label>
                         </div>
                         <div class="form-check">
-                            <input id="others" name="paymentMethod" type="radio" class="form-check-input" required="">
+                            <input id="others" name="tipo" formControlName="tipo" [(ngModel)]="dataPago.tipo" value="Otra" type="radio" class="form-check-input" required="">
                             <label class="form-check-label" for="paypal">Otra</label>
                         </div>
                     </div>
 
                     <div class="row gy-3">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="cc-name" placeholder="Nombre de cliente"
+                            <input type="text" class="form-control" id="cc-name" formControlName="nombreCLiente" [(ngModel)]="dataPago.nombreCLiente" id="cliente" placeholder="Nombre de cliente"
                                 required="">
                             <div class="invalid-feedback">
                                 Nombre es requerio
@@ -44,7 +43,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <input type="number" class="form-control" id="cc-number" placeholder="Número de Tarjeta"
+                            <input type="number" class="form-control" id="cc-number" formControlName="numeroTarjeta" [(ngModel)]="dataPago.numeroTarjeta" placeholder="Número de Tarjeta"
                                 required="">
                             <div class="invalid-feedback">
                                 Número de tarjeta inválido
@@ -52,21 +51,21 @@
                         </div>
 
                         <div class="col-md-3">
-                            <input type="text" class="form-control" id="mes" placeholder="Mes Expiración" required="">
+                            <input type="number" class="form-control" id="mes" formControlName="mesExp" [(ngModel)]="dataPago.mesExp" placeholder="Mes Expiración" required="">
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <input type="text" class="form-control" id="anno" placeholder="Año Expiración" required="">
+                            <input type="number" class="form-control" id="anno" formControlName="annoExp" [(ngModel)]="dataPago.annoExp" placeholder="Año Expiración" required="">
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
 
                         <div class="col-md-3">
-                            <input type="number" class="form-control" id="codigoSeguridad"
+                            <input type="number" class="form-control" id="codigoSeguridad" formControlName="codigoSeguridad" [(ngModel)]="dataPago.codigoSeguridad"
                                 placeholder="Código de seguridad (CCV)" required="">
                             <div class="invalid-feedback">
                                 Security code required
@@ -78,7 +77,7 @@
                     <div class="row">
                         <div class="col-12 text-end">
                             <button class="btn btn-outline-secondary mb-2 me-2" (click)="cancelar()" type="button">Cancelar Compra</button>
-                            <button class="w-25 btn btn-primary mb-2" type="submit">Finalizar Compra</button>
+                            <button class="w-25 btn btn-primary mb-2" (click)="pagar()" type="submit">Finalizar Compra</button>
                         </div>
                     </div>
                 </form>
