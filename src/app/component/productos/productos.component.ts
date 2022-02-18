@@ -62,6 +62,7 @@ export class ProductosComponent implements OnInit {
         for (let i=0; i<this.productos.length;i++){
           if (this.productos[i] == producto){
             this.productos.splice(i,1);
+            
           }
             swal.fire('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
           }
