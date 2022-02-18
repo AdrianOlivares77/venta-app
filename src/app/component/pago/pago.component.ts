@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Tarjeta } from 'src/app/service/tarjeta';
 import { VentaService } from 'src/app/service/venta.service';
 import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-pago',
@@ -14,10 +15,7 @@ export class PagoComponent implements OnInit {
 
   dataPago: Tarjeta = new Tarjeta();
 
-  constructor(private router: Router,private ventaService: VentaService) { }
 
-  ngOnInit(): void {
-  }
 
   form: FormGroup = new FormGroup({
     tipo: new FormControl(''),
@@ -27,6 +25,66 @@ export class PagoComponent implements OnInit {
     mesExp: new FormControl(''),
     annoExp: new FormControl(''),
   });
+
+  submitted: boolean = false;
+
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private ventaService: VentaService) { }
+
+  ngOnInit(): void {
+    this.getTarjeta();
+    this.form= this.formBuilder.group(
+      {
+        tipo:['',
+          [
+            Validators.required,
+          ]
+        ],
+        nombreCliente:['',
+          [
+            Validators.required,
+          ]
+        ],
+        numeroTarjeta:['',
+          [
+            Validators.required,
+          ]
+        ],
+        codigoSeguridad:['',
+          [
+            Validators.required,
+          ]
+        ],
+        mesExp:['',
+          [
+            Validators.required,
+          ]
+        ],
+        annoExp:['',
+          [
+            Validators.required,
+          ]
+        ]
+      }
+    );
+  }
+
+  getTarjeta() {
+    return;
+  }
+
+  get f(): {[key: string]: AbstractControl} {
+    return this.form.controls;
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+    this.pagar();
+  }
+  
 
   public cancelar(): void {
     swal.fire({
