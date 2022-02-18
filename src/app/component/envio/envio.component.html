@@ -16,16 +16,22 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="calle" [(ngModel)]="dataEnvio.calle" id="calle" placeholder="Calle">
-
+                                    <input type="text" class="form-control" formControlName="calle" [(ngModel)]="dataEnvio.calle" id="calle" placeholder="Calle" [ngClass]="{'is-invalid': submitted && f['calle'].errors}">
+                                    <div *ngIf="submitted && f['calle'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['calle'].errors['required']">La calle es requerida</div>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="ciudad" [(ngModel)]="dataEnvio.ciudad" id="ciudad" placeholder="Cuidad"
-                                        required="">
+                                    <input type="text" class="form-control" formControlName="ciudad" [(ngModel)]="dataEnvio.ciudad" id="ciudad" placeholder="Cuidad" [ngClass]="{'is-invalid': submitted && f['ciudad'].errors}">
+                                    <div *ngIf="submitted && f['ciudad'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['ciudad'].errors['required']">La Ciudad es requerida</div>
+                                    </div>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="region" [(ngModel)]="dataEnvio.region" id="Región" placeholder="Región"
-                                        required="">
+                                    <input type="text" class="form-control" formControlName="region" [(ngModel)]="dataEnvio.region" id="Región" placeholder="Región" [ngClass]="{'is-invalid': submitted && f['region'].errors}">
+                                    <div *ngIf="submitted && f['region'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['region'].errors['required']">La Región es requerida</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -33,20 +39,27 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" class="form-control" id="address" formControlName="pais" [(ngModel)]="dataEnvio.pais" placeholder="País" required="">
+                                    <input type="text" class="form-control" id="address" formControlName="pais" [(ngModel)]="dataEnvio.pais" placeholder="País" [ngClass]="{'is-invalid': submitted && f['pais'].errors}">
+                                    <div *ngIf="submitted && f['pais'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['pais'].errors['required']">El país es requerido</div>
+                                        
+                                    </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="number" class="form-control" id="address" formControlName="codigoPostal" [(ngModel)]="dataEnvio.codigoPostal" placeholder="Código Postal"
-                                        required="">
+                                    <input type="number" class="form-control" id="address" formControlName="codigoPostal" [(ngModel)]="dataEnvio.codigoPostal" placeholder="Código Postal" [ngClass]="{'is-invalid': submitted && f['codigoPostal'].errors}">
+                                    <div *ngIf="submitted && f['codigoPostal'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['codigoPostal'].errors['required']">El código postal es requerido</div>
+                                        <div *ngIf="f['codigoPostal'].errors['min']">El código postal es de mínimo 7 dígitos</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="container me-0 pe-0">
+                    <div class="form-group row mb-3">
                         <div class="row justify-content-end">
                             <div class="col-3 mt-3 me-0 p-0 text-center">
                                 <button class="btn btn-outline-secondary me-md-2" (click)="atras()" type="button">Volver</button>
-                                <button class="btn btn-outline-success" (click)="pagar()" type="button">Confirmar Envio</button>
+                                <button class="btn btn-outline-success" (click)="onSubmit()" type="button">Confirmar Envío</button>
                             </div>
                         </div>
                     </div>
