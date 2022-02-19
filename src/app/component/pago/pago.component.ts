@@ -14,7 +14,14 @@ import swal from 'sweetalert2';
 })
 export class PagoComponent implements OnInit {
 
-  dataPago: Tarjeta = new Tarjeta();
+  dataPago = {
+    tipo: '',
+    nombreCLiente: '',
+    numeroTarjeta: '',
+    codigoSeguridad: '',
+    mesExp: '',
+    annoExp: ''
+  }
 
 
   form: FormGroup = new FormGroup({
@@ -32,7 +39,6 @@ export class PagoComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder, private ventaService: VentaService,private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.getTarjeta();
     this.form= this.formBuilder.group(
       {
         tipo:['',
@@ -40,37 +46,41 @@ export class PagoComponent implements OnInit {
             Validators.required,
           ]
         ],
-        nombreCliente:['',
+        nombreCLiente:['',
           [
             Validators.required,
+            Validators.minLength(5)
           ]
         ],
         numeroTarjeta:['',
           [
             Validators.required,
+            Validators.pattern("^[0-9]*$"),
+            Validators.minLength(13)
           ]
         ],
         codigoSeguridad:['',
           [
             Validators.required,
+            Validators.maxLength(4)
           ]
         ],
         mesExp:['',
           [
             Validators.required,
+            Validators.pattern("^[0-9]*$"),
+            Validators.maxLength(2)
           ]
         ],
         annoExp:['',
           [
             Validators.required,
+            Validators.pattern("^[0-9]*$"),
+            Validators.maxLength(2)
           ]
         ]
       }
     );
-  }
-
-  getTarjeta() {
-    return;
   }
 
   get f(): {[key: string]: AbstractControl} {
@@ -109,9 +119,15 @@ export class PagoComponent implements OnInit {
   }
 
   public pagar(): void {
-    this.dataPago.id = this.ventaService.getventaProductos().length;
-    this.ventaService.setDatosPago(this.dataPago);
-    console.log(this.dataPago);
+    let datos = new Tarjeta();
+    datos.id = 0;
+    datos.tipo = this.dataPago.tipo;
+    datos.nombreCLiente = this.dataPago.nombreCLiente;
+    datos.mesExp = this.dataPago.mesExp;
+    datos.annoExp = this.dataPago.annoExp;
+    datos.numeroTarjeta = parseInt(this.dataPago.numeroTarjeta);
+    datos.codigoSeguridad = parseInt(this.dataPago.codigoSeguridad);
+    this.ventaService.setDatosPago(datos);
     this.router.navigate(['resumen-compra']);
   }
 
