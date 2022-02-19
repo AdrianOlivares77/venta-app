@@ -1,10 +1,13 @@
 <div class="container my-2">
     <main>
         <div class="py-5 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="currentColor" class="bi bi-send-check" viewBox="0 0 16 16">
-                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z"/>
-                <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"/>
-              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="currentColor" class="bi bi-send-check"
+                viewBox="0 0 16 16">
+                <path
+                    d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z" />
+                <path
+                    d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z" />
+            </svg>
             <h2 class="mt-3">Formulario de Envío</h2>
         </div>
         <div class="row g-5">
@@ -16,21 +19,30 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="calle" [(ngModel)]="dataEnvio.calle" id="calle" placeholder="Calle" [ngClass]="{'is-invalid': submitted && f['calle'].errors}">
+                                    <input type="text" class="form-control" formControlName="calle"
+                                        [(ngModel)]="dataEnvio.calle" id="calle" placeholder="Calle"
+                                        [ngClass]="{'is-invalid': submitted && f['calle'].errors}">
                                     <div *ngIf="submitted && f['calle'].errors" class="invalid-feedback">
                                         <div *ngIf="f['calle'].errors['required']">La calle es requerida</div>
+                                        <div *ngIf="f['calle'].errors['minlength']">Ingrese al menos 5 caracteres</div>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="ciudad" [(ngModel)]="dataEnvio.ciudad" id="ciudad" placeholder="Cuidad" [ngClass]="{'is-invalid': submitted && f['ciudad'].errors}">
+                                    <input type="text" class="form-control" formControlName="ciudad"
+                                        [(ngModel)]="dataEnvio.ciudad" id="ciudad" placeholder="Cuidad"
+                                        [ngClass]="{'is-invalid': submitted && f['ciudad'].errors}">
                                     <div *ngIf="submitted && f['ciudad'].errors" class="invalid-feedback">
                                         <div *ngIf="f['ciudad'].errors['required']">La Ciudad es requerida</div>
+                                        <div *ngIf="f['ciudad'].errors['minlength']">Ingrese al menos 3 caracteres</div>
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <input type="text" class="form-control" formControlName="region" [(ngModel)]="dataEnvio.region" id="Región" placeholder="Región" [ngClass]="{'is-invalid': submitted && f['region'].errors}">
+                                    <input type="text" class="form-control" formControlName="region"
+                                        [(ngModel)]="dataEnvio.region" id="Región" placeholder="Región"
+                                        [ngClass]="{'is-invalid': submitted && f['region'].errors}">
                                     <div *ngIf="submitted && f['region'].errors" class="invalid-feedback">
                                         <div *ngIf="f['region'].errors['required']">La Región es requerida</div>
+                                        <div *ngIf="f['region'].errors['minlength']">Ingrese al menos 2 caracteres</div>
                                     </div>
                                 </div>
                             </div>
@@ -39,17 +51,24 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <input type="text" class="form-control" id="address" formControlName="pais" [(ngModel)]="dataEnvio.pais" placeholder="País" [ngClass]="{'is-invalid': submitted && f['pais'].errors}">
+                                    <input type="text" class="form-control" id="address" formControlName="pais"
+                                        [(ngModel)]="dataEnvio.pais" placeholder="País"
+                                        [ngClass]="{'is-invalid': submitted && f['pais'].errors}">
                                     <div *ngIf="submitted && f['pais'].errors" class="invalid-feedback">
                                         <div *ngIf="f['pais'].errors['required']">El país es requerido</div>
-                                        
+                                        <div *ngIf="f['pais'].errors['minlength']">Ingrese al menos 3 caracteres</div>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <input type="number" class="form-control" id="address" formControlName="codigoPostal" [(ngModel)]="dataEnvio.codigoPostal" placeholder="Código Postal" [ngClass]="{'is-invalid': submitted && f['codigoPostal'].errors}">
+                                    <input type="text" class="form-control" id="address"
+                                        formControlName="codigoPostal" [(ngModel)]="dataEnvio.codigoPostal"
+                                        placeholder="Código Postal"
+                                        [ngClass]="{'is-invalid': submitted && f['codigoPostal'].errors}">
                                     <div *ngIf="submitted && f['codigoPostal'].errors" class="invalid-feedback">
                                         <div *ngIf="f['codigoPostal'].errors['required']">El código postal es requerido</div>
-                                        <div *ngIf="f['codigoPostal'].errors['min']">El código postal es de mínimo 7 dígitos</div>
+                                        <div *ngIf="f['codigoPostal'].errors['pattern']">Inserte sólo dígitos</div>
+                                        <div *ngIf="f['codigoPostal'].errors['minlength']">El código postal es de mínimo 4
+                                            dígitos</div>
                                     </div>
                                 </div>
                             </div>
@@ -58,8 +77,10 @@
                     <div class="form-group row mb-3">
                         <div class="row justify-content-end">
                             <div class="col-3 mt-3 me-0 p-0 text-center">
-                                <button class="btn btn-outline-secondary me-md-2" (click)="atras()" type="button">Volver</button>
-                                <button class="btn btn-outline-success" (click)="onSubmit()" type="button">Confirmar Envío</button>
+                                <button class="btn btn-outline-secondary me-md-2" (click)="atras()"
+                                    type="button">Volver</button>
+                                <button class="btn btn-outline-success" (click)="onSubmit()" type="button">Confirmar
+                                    Envío</button>
                             </div>
                         </div>
                     </div>

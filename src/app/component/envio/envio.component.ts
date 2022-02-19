@@ -10,8 +10,13 @@ import { VentaService } from 'src/app/service/venta.service';
 })
 export class EnvioComponent implements OnInit {
 
-  dataEnvio: Envio = new Envio();
-
+  dataEnvio = {
+    pais: '',
+    calle: '',
+    ciudad: '',
+    region: '',
+    codigoPostal: ''
+  }
 
   form: FormGroup = new FormGroup({
     pais: new FormControl(''),
@@ -26,33 +31,37 @@ export class EnvioComponent implements OnInit {
   constructor(private router: Router, private ventaService: VentaService, private formBuilder: FormBuilder, private activateRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.getEnvio();
     this.form= this.formBuilder.group(
       {
         pais:['',
           [
             Validators.required,
+            Validators.minLength(3)
           ]
         ],
         calle:['',
           [
             Validators.required,
+            Validators.minLength(5)
           ]
         ],
         ciudad:['',
           [
             Validators.required,
+            Validators.minLength(3)
           ]
         ],
         region:['',
           [
             Validators.required,
+            Validators.minLength(2)
           ]
         ],
         codigoPostal:['',
           [
             Validators.required,
-            Validators.min(7)
+            Validators.pattern("^[0-9]*$"),
+            Validators.minLength(4)
           ]
         ]
       }
@@ -64,6 +73,7 @@ export class EnvioComponent implements OnInit {
   get f(): {[key: string]: AbstractControl} {
     return this.form.controls;
   }
+
   onSubmit(): void {
     this.submitted = true;
     if (this.form.invalid) {
@@ -77,12 +87,15 @@ export class EnvioComponent implements OnInit {
   }
 
   public pagar(): void {
-    this.dataEnvio.id = this.ventaService.getventaProductos().length;
-    this.ventaService.setDatosEnvio(this.dataEnvio);
+    let data = new Envio();
+    data.id = 0;
+    data.pais = this.dataEnvio.pais;
+    data.calle = this.dataEnvio.calle;
+    data.ciudad = this.dataEnvio.ciudad;
+    data.region = this.dataEnvio.region;
+    data.codigoPostal = parseInt(this.dataEnvio.codigoPostal);
+    this.ventaService.setDatosEnvio(data);
     this.router.navigate(['/pago']);
   }
 
-  getEnvio() {
-    return;
-  }
 }
