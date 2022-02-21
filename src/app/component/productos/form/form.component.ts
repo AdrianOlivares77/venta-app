@@ -5,6 +5,7 @@ import { Producto } from 'src/app/service/producto';
 import { PRODUCTOS } from 'src/app/service/productos.json';
 import swal from 'sweetalert2';
 import { AbstractControl, FormBuilder, FormControl, FormGroup,  Validators } from '@angular/forms';
+import { ProductosService } from 'src/app/service/productos.service';
 
 @Component({
   selector: 'app-form',
@@ -13,7 +14,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup,  Validators } fro
 })
 export class FormComponent implements OnInit {
   producto: Producto = new Producto();
-  productos: any[] = []
+  productos: Producto[] = []
 
   form: FormGroup = new FormGroup({
     nombre: new FormControl(''),
@@ -24,12 +25,8 @@ export class FormComponent implements OnInit {
 
   submitted : boolean = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute) { 
-
-    this.getProductos().subscribe ((productos) =>{
-      this.productos = productos;
-    })
-    
+  constructor(private productosService: ProductosService,private router: Router, private formBuilder: FormBuilder, private activeRoute: ActivatedRoute) { 
+    this.productos = this.productosService.getProductos();
   }
 
 
@@ -88,9 +85,6 @@ export class FormComponent implements OnInit {
   onReset(): void{
     this.submitted=false;
     this.form.reset();
-  }
-  getProductos() : Observable<Producto[]>{
-    return of(PRODUCTOS);
   }
 
   createProducto() {

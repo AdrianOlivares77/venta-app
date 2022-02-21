@@ -6,6 +6,7 @@ import {PageEvent} from '@angular/material/paginator';
 import { CarritoService } from 'src/app/service/carrito.service';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ProductosService } from 'src/app/service/productos.service';
 
 @Component({
   selector: 'app-productos',
@@ -20,16 +21,10 @@ export class ProductosComponent implements OnInit {
   desde: number = 0;
   hasta: number = 5;
 
-  constructor(private carritoService: CarritoService,private router: Router) { }
+  constructor(private productosService: ProductosService,private carritoService: CarritoService,private router: Router) { }
 
   ngOnInit(): void {
-    this.getProductos().subscribe ((productos) =>{
-      this.productos = productos;
-    })
-  }
-
-  getProductos() : Observable<Producto[]>{
-    return of(PRODUCTOS);
+    this.productos = this.productosService.getProductos();
   }
 
   cambiarpagina(e:PageEvent){
@@ -60,9 +55,8 @@ export class ProductosComponent implements OnInit {
     then((result) => {
       if (result.value) {
         for (let i=0; i<this.productos.length;i++){
-          if (this.productos[i] == producto){
-            this.productos.splice(i,1);
-            
+          if (this.productos[i].id == producto.id){
+            this.productosService.deleteByIndex(i);
           }
             swal.fire('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
           }
