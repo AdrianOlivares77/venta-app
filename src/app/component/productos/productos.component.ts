@@ -47,28 +47,13 @@ export class ProductosComponent implements OnInit {
     })
   }
 
-  eliminarProducto(producto: Producto) {
-    swal.fire({
-      title: 'Estas seguro?',
-      text: `¿Seguro que deseas eliminar al producto ${producto.nombre}`,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar!',
-    }).
-    then((result) => {
-      if (result.value) {
-        for (let i=0; i<this.productos.length;i++){
-          if (this.productos[i] == producto){
-            this.productos.splice(i,1);
-            
-          }
-            swal.fire('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
-          }
-        
-      } 
-    })
-  }
+  public eliminarProducto(producto: Producto) {
+    for (let i=0; i<this.productos.length;i++){
+      if (this.productos[i].id == producto.id){
+        this.productos.splice(i,1);
+        }
+          swal.fire('Producto eliminado', `El producto ${producto.nombre} has sido eliminado con éxito!`, 'success')
+        }  
+  } 
 }
 
