@@ -1,3 +1,24 @@
+# Designed by
+
+1. Pamela Cifras
+1. Ignacio Barril
+1. Adrián Olivares
+1. Héctor Labraña
+
+# Users already registers in APP
+
+> admin@admin.cl admin22.
+
+# For run test
+
+> npm install
+> ng test
+
+# For run app
+
+> npm install
+> ng serve
+
 # TiendaApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
